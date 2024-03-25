@@ -1,4 +1,4 @@
-# discord-tool-new
+# Aternova Discord Tool
 
 Functional Requirements:
 - User Registration and Login: Users should be able to register for the application and then log in to their accounts.
