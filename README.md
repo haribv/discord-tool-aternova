@@ -3,8 +3,8 @@
 ![image](https://github.com/user-attachments/assets/95951402-c0bc-4f61-93aa-98d1cc1a2fc6)
 
 Requests:
-import requests
-import dhooks
+- import requests
+- import dhooks
 
 How to Use Aternova Builder:
 - Installation
