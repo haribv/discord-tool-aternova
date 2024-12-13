@@ -1,5 +1,6 @@
 import os
 
+#fixed for now
 class PythonBuilder:
     def __init__(self):
         self.banner = """
@@ -32,7 +33,7 @@ class PythonBuilder:
 
     def build(self, filename):
 
-        os.system(f'pyinstaller --onefile {filename}')
+        os.system(f'python -m PyInstaller {filename}')
 
         print("Build completed! Executable file is in the 'dist' directory.")
         input("Press Enter to continue...")
